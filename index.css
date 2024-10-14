@@ -72,12 +72,16 @@ body {
   color: #1e000e;
 }
 
-.header-menu img,
+.header-menu,
+.header-logo,
 .header-account,
 .header-cart,
 .subscriber-button,
 .tag,
-.tag-active {
+.tag .active,
+.product,
+.footer-form button,
+.company-chat {
   cursor: pointer;
 }
 
@@ -185,10 +189,9 @@ body {
   border: 2px solid #1e000e;
 }
 
-.filter-tags .tag-active {
-  padding: 8px 16px;
-  border-radius: 32px;
+.filter-tags .active {
   background: #f7c325;
+  border: 0;
 }
 
 .category-products {

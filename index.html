@@ -25,7 +25,7 @@
         <img src="assets/menu.png" alt="Menu de navegação" />
         <span>Todos os produtos</span>
       </div>
-      <img src="assets/logo-header.png" alt="Logo" />
+      <img src="assets/logo-header.png" class="header-logo" alt="Logo" />
       <div class="header-buttons">
         <div class="subscriber-button">
           <span>Assinar Whiteeth</span>
@@ -72,15 +72,11 @@
           <img src="assets/filter-list.png" alt="Filtro" />
           <span>Filtros</span>
         </div>
-        <div class="filter-tags">
-          <div class="tag-active">Todos</div>
-          <div class="tag">Pasta de dente</div>
-          <div class="tag">Escova de dente</div>
-        </div>
+        <div class="filter-tags" id="filters"></div>
       </div>
-      <div class="category">
+      <div class="category" id="toothpaste-category">
         <h4 class="category-title">Pasta de dente</h4>
-        <div class="category-products">
+        <div class="category-products" id="toothpaste-list">
           <div class="product">
             <img src="assets/toothpaste.png" alt="Pasta de dente" />
             <div class="product-info">
@@ -115,7 +111,55 @@
                 <img src="assets/star-half.png" alt="" />
                 <span>(24)</span>
               </div>
-              <h4>Hortelã</h4>
+              <h4>Morango</h4>
+              <div class="product-price">
+                <span>R$70,90</span>
+                <p>R$50,90</p>
+              </div>
+              <div class="product-button">
+                <span>Adicionar ao carrinho</span>
+              </div>
+            </div>
+          </div>
+          <div class="product">
+            <div class="offer-alert">
+              <span>30% OFF</span>
+            </div>
+            <img src="assets/toothpaste.png" alt="Pasta de dente" />
+            <div class="product-info">
+              <div class="product-rating">
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star-half.png" alt="" />
+                <span>(24)</span>
+              </div>
+              <h4>Uva</h4>
+              <div class="product-price">
+                <span>R$70,90</span>
+                <p>R$50,90</p>
+              </div>
+              <div class="product-button">
+                <span>Adicionar ao carrinho</span>
+              </div>
+            </div>
+          </div>
+          <div class="product">
+            <div class="offer-alert">
+              <span>30% OFF</span>
+            </div>
+            <img src="assets/toothpaste.png" alt="Pasta de dente" />
+            <div class="product-info">
+              <div class="product-rating">
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star-half.png" alt="" />
+                <span>(24)</span>
+              </div>
+              <h4>Café</h4>
               <div class="product-price">
                 <span>R$70,90</span>
                 <p>R$50,90</p>
@@ -127,10 +171,13 @@
           </div>
         </div>
       </div>
-      <div class="category">
+      <div class="category" id="toothbrush-category">
         <h4 class="category-title">Escova de dente</h4>
-        <div class="category-products">
+        <div class="category-products" id="toothbrush-list">
           <div class="product">
+            <div class="offer-alert">
+              <span>30% OFF</span>
+            </div>
             <img src="assets/toothbrush.png" alt="Escova de dente" />
             <div class="product-info">
               <div class="product-rating">
@@ -141,9 +188,10 @@
                 <img src="assets/star-half.png" alt="" />
                 <span>(24)</span>
               </div>
-              <h4>Hortelã</h4>
+              <h4>Bamboo</h4>
               <div class="product-price">
-                <p>R$70,90</p>
+                <span>R$70,90</span>
+                <p>R$50,90</p>
               </div>
               <div class="product-button">
                 <span>Adicionar ao carrinho</span>
@@ -164,7 +212,31 @@
                 <img src="assets/star-half.png" alt="" />
                 <span>(24)</span>
               </div>
-              <h4>Hortelã</h4>
+              <h4>Mógno</h4>
+              <div class="product-price">
+                <span>R$70,90</span>
+                <p>R$50,90</p>
+              </div>
+              <div class="product-button">
+                <span>Adicionar ao carrinho</span>
+              </div>
+            </div>
+          </div>
+          <div class="product">
+            <div class="offer-alert">
+              <span>30% OFF</span>
+            </div>
+            <img src="assets/toothbrush.png" alt="Escova de dente" />
+            <div class="product-info">
+              <div class="product-rating">
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star.png" alt="Estrela" />
+                <img src="assets/star-half.png" alt="" />
+                <span>(24)</span>
+              </div>
+              <h4>Carvalho</h4>
               <div class="product-price">
                 <span>R$70,90</span>
                 <p>R$50,90</p>
@@ -176,10 +248,13 @@
           </div>
         </div>
       </div>
-      <div class="category">
+      <div class="category" id="other-category">
         <h4 class="category-title">Outros</h4>
-        <div class="category-products">
+        <div class="category-products" id="other-list">
           <div class="product">
+            <div class="offer-alert">
+              <span>30% OFF</span>
+            </div>
             <img src="assets/dental-floss.png" alt="Fio dental" />
             <div class="product-info">
               <div class="product-rating">
@@ -192,7 +267,8 @@
               </div>
               <h4>Hortelã</h4>
               <div class="product-price">
-                <p>R$70,90</p>
+                <span>R$70,90</span>
+                <p>R$50,90</p>
               </div>
               <div class="product-button">
                 <span>Adicionar ao carrinho</span>
