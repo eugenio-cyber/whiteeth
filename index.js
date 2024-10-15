@@ -1,74 +1,43 @@
-const filters = [
-  { name: "Todos", active: true },
-  { name: "Pasta de dente", active: false },
-  { name: "Escova de dente", active: false },
-  { name: "Raspador de língua", active: false },
-  { name: "Clareamento", active: false },
-  { name: "Aparelhos ortodônticos", active: false },
-];
-
-function handleStickyHeader() {
-  const header = document.getElementById("myHeader");
-  const sticky = header.offsetTop;
-
-  if (window.scrollY > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
+import { products } from "./products.js";
+import { filters } from "./filters.js";
 
 function addFilters() {
   const myFilter = document.getElementById("filters");
 
-  for (let i = 0; i < filters.length; i++) {
-    const filter = filters[i];
+  filters.forEach((filter) => {
     const filterElement = document.createElement("div");
 
-    filterElement.classList.add("tag");
+    filterElement.classList = `tag ${filter.active ? "active" : ""}`;
     filterElement.textContent = filter.name;
-
-    if (filter.active) {
-      filterElement.classList.add("active");
-    }
 
     myFilter.appendChild(filterElement);
 
     filterElement.addEventListener("click", () => {
-      if (filter.active && filter.name !== "Todos") {
+      const filterActive = filters.find((filter) => filter.active);
+
+      if (filterActive.name === filter.name) {
         filters.forEach((element) => {
-          if (element.name != "Todos") {
-            element.active = false;
-          } else {
-            element.active = true;
-          }
+          element.active = element.name === "Todos";
         });
       } else {
         filters.forEach((element) => {
-          if (element.name != filter.name) {
-            element.active = false;
-          } else {
-            element.active = true;
-          }
+          element.active = element.name === filter.name;
         });
       }
 
-      handleActive();
+      handleActiveFilter();
     });
-  }
+  });
 }
 
-function handleActive() {
+function handleActiveFilter() {
+  const filterActive = filters.find((filter) => filter.active);
   const filtersElements = document.querySelectorAll(".tag");
 
   filtersElements.forEach((filterElement) => {
-    const filter = filters.find(
-      (filter) => filter.name === filterElement.textContent
-    );
-
-    if (filter.active) {
+    if (filterActive.name === filterElement.textContent) {
       filterElement.classList.add("active");
-      handleProductsCategory(filter.name);
+      handleProductsCategory(filterActive.name);
     } else {
       filterElement.classList.remove("active");
     }
@@ -80,32 +49,92 @@ function handleProductsCategory(filterName) {
   const toothbrushCategory = document.getElementById("toothbrush-category");
   const otherCategory = document.getElementById("other-category");
 
-  switch (filterName) {
-    case "Todos":
-      toothpasteCategory.style.display = "block";
-      toothbrushCategory.style.display = "block";
-      otherCategory.style.display = "block";
-      break;
-    case "Pasta de dente":
-      toothpasteCategory.style.display = "block";
-      toothbrushCategory.style.display = "none";
-      otherCategory.style.display = "none";
-      break;
-    case "Escova de dente":
-      toothbrushCategory.style.display = "block";
-      toothpasteCategory.style.display = "none";
-      otherCategory.style.display = "none";
-      break;
-    default:
-      toothpasteCategory.style.display = "none";
-      toothbrushCategory.style.display = "none";
-      otherCategory.style.display = "block";
-      break;
-  }
+  const categories = {
+    Todos: [toothpasteCategory, toothbrushCategory, otherCategory],
+    "Pasta de dente": [toothpasteCategory],
+    "Escova de dente": [toothbrushCategory],
+    default: [otherCategory],
+  };
+
+  const categoryToShow = categories[filterName] || categories.default;
+
+  categories.Todos.forEach((category) => {
+    category.style.display = "none";
+  });
+
+  categoryToShow.forEach((category) => {
+    category.style.display = "block";
+  });
 }
 
-window.onscroll = function () {
-  handleStickyHeader();
-};
+function createProducts(product) {
+  let offerAlert = "";
+  let price = `<p>R$${product.price.toFixed(2)}</p>`;
+  let oldPrice = "";
+
+  const stars = Array(Math.floor(product.stars))
+    .fill('<img src="assets/star.png" alt="Estrela" />')
+    .join("");
+
+  const halfStar =
+    product.stars % 1 >= 0.5
+      ? '<img src="assets/star-half.png" alt="Meia estrela" />'
+      : "";
+
+  if (product.isPromotion) {
+    offerAlert = `<div class="offer-alert"><span>30% OFF</span></div>`;
+    price = `<p>R$${(product.price - product.discount).toFixed(2)}</p>`;
+    oldPrice = `<span>R$${product.price.toFixed(2)}</span>`;
+  }
+
+  return `
+    <div class="product">
+      ${offerAlert}
+      <img src="${product.img}" alt="${product.name}" />
+      <div class="product-info">
+        <div class="product-rating">
+          ${stars}${halfStar}
+          <span>(${product.ratings})</span>
+        </div>
+        <h4>${product.name}</h4>
+        <div class="product-price">
+          ${oldPrice}${price}
+        </div>
+        <div class="product-button">
+          <span>Adicionar ao carrinho</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function addProducts() {
+  const toothpasteContainer = document.getElementById("toothpaste-list");
+  const toothbrushContainer = document.getElementById("toothbrush-list");
+  const otherContainer = document.getElementById("other-list");
+  const toothpasteProducts = [];
+  const toothbrushProducts = [];
+  const otherProducts = [];
+
+  products.forEach((product) => {
+    switch (product.type) {
+      case "toothpaste":
+        toothpasteProducts.push(createProducts(product));
+        break;
+      case "toothbrush":
+        toothbrushProducts.push(createProducts(product));
+        break;
+
+      default:
+        otherProducts.push(createProducts(product));
+        break;
+    }
+  });
+
+  toothpasteContainer.innerHTML = toothpasteProducts;
+  toothbrushContainer.innerHTML = toothbrushProducts;
+  otherContainer.innerHTML = otherProducts;
+}
 
 addFilters();
+addProducts();
