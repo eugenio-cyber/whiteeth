@@ -1,6 +1,8 @@
 import { products } from "./products.js";
 import { filters } from "./filters.js";
 
+const productCart = [];
+
 function addFilters() {
   const myFilter = document.getElementById("filters");
 
@@ -100,7 +102,7 @@ function createProducts(product) {
         <div class="product-price">
           ${oldPrice}${price}
         </div>
-        <div class="product-button">
+        <div class="product-button" id="product-button" data-product-id="${product.id}">
           <span>Adicionar ao carrinho</span>
         </div>
       </div>
@@ -134,6 +136,19 @@ function addProducts() {
   toothpasteContainer.innerHTML = toothpasteProducts;
   toothbrushContainer.innerHTML = toothbrushProducts;
   otherContainer.innerHTML = otherProducts;
+
+  handleProductCart();
+}
+
+function handleProductCart() {
+  document.querySelectorAll(".product-button").forEach((item) => {
+    item.addEventListener("click", () => {
+      const productCartElement = document.getElementById("product-cart");
+
+      productCart.push(products.find((p) => p.id == item.dataset.productId));
+      productCartElement.textContent = productCart.length;
+    });
+  });
 }
 
 addFilters();

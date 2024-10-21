@@ -1,5 +1,6 @@
 export const products = [
   {
+    id: 1,
     name: "Hortelã",
     price: 70.9,
     isPromotion: false,
@@ -10,6 +11,7 @@ export const products = [
     type: "toothpaste",
   },
   {
+    id: 2,
     name: "Morango",
     price: 70.9,
     isPromotion: true,
@@ -20,6 +22,7 @@ export const products = [
     type: "toothpaste",
   },
   {
+    id: 3,
     name: "Uva",
     price: 70.9,
     isPromotion: true,
@@ -30,6 +33,7 @@ export const products = [
     type: "toothpaste",
   },
   {
+    id: 4,
     name: "Café",
     price: 70.9,
     isPromotion: true,
@@ -40,6 +44,7 @@ export const products = [
     type: "toothpaste",
   },
   {
+    id: 5,
     name: "Bamboo",
     price: 70.9,
     isPromotion: true,
@@ -50,6 +55,7 @@ export const products = [
     type: "toothbrush",
   },
   {
+    id: 6,
     name: "Mógno",
     price: 70.9,
     isPromotion: true,
@@ -60,6 +66,7 @@ export const products = [
     type: "toothbrush",
   },
   {
+    id: 7,
     name: "Carvalho",
     price: 70.9,
     isPromotion: true,
@@ -70,6 +77,7 @@ export const products = [
     type: "toothbrush",
   },
   {
+    id: 8,
     name: "Fio dental",
     price: 70.9,
     isPromotion: true,
@@ -80,6 +88,7 @@ export const products = [
     type: "dental-floss",
   },
   {
+    id: 9,
     name: "Fio dental",
     price: 70.9,
     isPromotion: true,
