@@ -82,7 +82,7 @@ body {
 
 .header-menu,
 .header-logo,
-.header-account,
+.header-account img,
 .header-cart,
 .subscriber-button,
 .tag,
@@ -95,6 +95,11 @@ body {
 
 .header-buttons {
   display: flex;
+}
+
+.header-buttons .header-account,
+.header-cart {
+  display: flex;
   align-items: center;
 }
 
@@ -103,7 +108,76 @@ body {
 }
 
 .header-account {
+  position: relative;
   margin-right: 16px;
+}
+
+.header-account:hover .account-options {
+  display: block;
+}
+
+.account-options {
+  position: absolute;
+  top: 48px;
+  right: -34px;
+  display: none;
+  padding-top: 8px;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 20px;
+  border-radius: 16px;
+  background: var(--beige);
+}
+
+.account-form label {
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 6px;
+}
+
+.account-form input {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  border: 1px solid var(--dark-brown);
+  background: transparent;
+}
+
+.account-form button {
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  background: var(--dark-brown);
+  color: var(--beige);
+}
+
+.account-form span {
+  text-align: center;
+  cursor: pointer;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.account-form span:hover {
+  opacity: 0.4;
+  border-radius: 8px;
+  color: var(--beige);
+  background: var(--dark-brown);
 }
 
 .header-cart {
